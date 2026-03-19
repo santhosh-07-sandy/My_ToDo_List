@@ -2,8 +2,6 @@
 
 GrowthPath is a high-performance, responsive ToDo application built with **React** and **Vite**. It's designed for professionals, trainers, and learners who want to track their daily routine, long-term growth plans, and content ideas with a premium, focused experience.
 
-![App Screenshot](public/screenshot.png)
-
 ## ✨ Features
 
 - **🌅 Intelligent Daily Routine**: Pre-populated with a structured 5:00 AM – 10:00 PM schedule.
