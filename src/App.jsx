@@ -564,7 +564,7 @@ function App() {
                   <select 
                     value={newWeeklyItem.icon}
                     onChange={(e) => setNewWeeklyItem({...newWeeklyItem, icon: e.target.value})}
-                    style={{ gridColumn: 'span 2' }}
+                    className="col-span-2"
                   >
                     {icons.map(i => <option key={i} value={i}>{i}</option>)}
                   </select>

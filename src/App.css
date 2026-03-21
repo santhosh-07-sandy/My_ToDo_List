@@ -189,7 +189,7 @@ header {
   justify-content: space-around;
   align-items: center;
   z-index: 1000;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
 }
 
 .mobile-nav-item {
@@ -200,6 +200,7 @@ header {
   color: var(--text-muted);
   font-size: 0.7rem;
   transition: all 0.2s;
+  padding: 0 0.25rem;
 }
 
 .mobile-nav-item.active {
@@ -408,9 +409,16 @@ header {
   margin-bottom: 1.5rem;
 }
 
+.col-span-2 {
+  grid-column: span 2;
+}
+
 @media (max-width: 600px) {
   .form-grid {
     grid-template-columns: 1fr;
+  }
+  .col-span-2 {
+    grid-column: span 1 !important;
   }
 }
 
@@ -478,6 +486,20 @@ header {
 @keyframes slideDown {
   from { transform: translate(-50%, -100%); opacity: 0; }
   to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+@keyframes slideUpToast {
+  from { transform: translate(-50%, 100%); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .toast-notification {
+    top: auto;
+    bottom: 90px;
+    width: calc(100% - 2rem);
+    animation: slideUpToast 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  }
 }
 
 .toast-content {

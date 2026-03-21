@@ -1,24 +1,27 @@
 # GrowthPath: Premium Daily Routine & Growth Tracker
 
-GrowthPath is a high-performance, responsive ToDo application built with **React** and **Vite**. It's designed for professionals, trainers, and learners who want to track their daily routine, long-term growth plans, and content ideas with a premium, focused experience.
+GrowthPath is a high-performance, responsive Progressive Web Application (PWA) built with **React** and **Vite**. It's designed for professionals, trainers, and learners who want to track their daily routine, long-term growth plans, and content ideas with a premium, distraction-free experience.
 
-## ✨ Features
+## ✨ Key Features
 
-- **🌅 Intelligent Daily Routine**: Pre-populated with a structured 5:00 AM – 10:00 PM schedule.
-- **🌿 Emerald Green Theme**: A lush, modern aesthetic with neon accents and dark-mode optimization.
-- **📱 Mobile-First Design**: Includes a dedicated bottom navigation bar and responsive stacking for all screen sizes.
-- **🎉 Interactive Celebrations**: Real-time emerald confetti bursts upon task completion.
-- **🧠 Daily Motivation**: Random motivational quotes fetched from a public API stay visible for 1 minute to keep you inspired.
-- **📈 6-Month Growth Roadmap**: Integrated tracking for your transition into a Java Developer role.
+- **🔐 Secure Authentication**: Built-in login and signup flow with user-specific data persistence.
+- **🌅 Intelligent Daily Routine**: Pre-populated with a structured daily schedule, supporting custom task additions with dynamic categories and icons.
+- **📱 Fully Responsive Mobile-First Design**: Includes a dedicated bottom navigation bar, dynamic form scaling, and intelligent layout stacking for a perfect experience on any mobile device.
+- **🔔 Advanced Notifications**: Browser notifications, in-app toasts with motivational messages, and audio cues to keep you on track.
+- **🎉 Interactive Celebrations**: Real-time emerald confetti bursts upon task completion to reward your progress.
+- **🧠 Daily Motivation**: Random motivational quotes fetched from a public API stay visible to keep you inspired.
+- **📈 6-Month Growth Roadmap**: Integrated tracking for your transition and career growth plans.
 - **🎥 Idea & Project Bank**: Dedicated spaces for YouTube content and technical projects.
+- **🌐 Progressive Web App (PWA)**: Installable on desktop and mobile devices, featuring a background service worker for offline capabilities and background scheduling.
 
 ## 🚀 Tech Stack
 
-- **Frontend**: React (Hooks, Functional Components)
+- **Frontend**: React (Hooks, Context API, Functional Components)
 - **Tooling**: Vite (Fast Builds & HMR)
+- **Styling**: Modern Vanilla CSS (Flexbox, Grid Layouts, Glassmorphism, CSS Variables)
 - **Iconography**: Lucide React
 - **Animations**: Canvas-Confetti
-- **Styling**: Modern CSS (Flexbox, Grid, CSS Variables)
+- **PWA**: Service Workers & Web App Manifest
 
 ## 🛠️ Installation & Setup
 
@@ -45,14 +48,14 @@ GrowthPath is a high-performance, responsive ToDo application built with **React
 
 ## 📅 Schedule Overview
 
-The app is pre-configured with a productive weekday schedule:
-- **Morning**: Personal growth, English practice, and Aptitude training.
-- **Day**: Teaching Java and collecting student insights.
-- **Evening**: Framework learning (Spring Boot/React) and content creation.
+The app is pre-configured with a highly productive schedule template:
+- **Morning Focus**: Personal growth, English practice, physical fitness, and Aptitude training.
+- **Day Flow**: Teaching, learning, and focused work sessions.
+- **Evening Routine**: Framework learning (e.g., Spring Boot/React), content creation, and wind-down.
 
 ## 🤝 Contributing
 
-Contributions are welcome! If you have ideas for new features or sections for the 6-month growth plan, feel free to open a PR.
+Contributions are welcome! If you have ideas for new features, design enhancements, or new sections for the growth plan, feel free to open a pull request.
 
 ---
-Built with ❤️ for High-Performance Learning.
+Built with ❤️ for High-Performance Learning and Continuous Growth.
