@@ -46,6 +46,9 @@ import {
   YOUTUBE_IDEAS 
 } from './data';
 import { playClick, playSuccess } from './soundUtils';
+import { useAuth } from './AuthContext';
+import { UserService } from './UserService';
+import Auth from './Auth';
 import './App.css';
 
 const ICON_MAP = {
@@ -56,18 +59,22 @@ const ICON_MAP = {
 };
 
 function App() {
+  const { user, logout } = useAuth();
+  
   const [completedTasks, setCompletedTasks] = useState(() => {
-    const saved = localStorage.getItem('todo_completed_tasks');
+    if (!user) return [];
+    const saved = UserService.getUserData(user.id, 'completed_tasks', {});
     const today = new Date().toDateString();
-    const parsed = saved ? JSON.parse(saved) : {};
-    return parsed.date === today ? parsed.tasks : [];
+    return saved.date === today ? saved.tasks : [];
   });
 
   const [activeTab, setActiveTab] = useState('Today');
+  
   const [tasks, setTasks] = useState(() => {
-    const saved = localStorage.getItem('todo_tasks');
-    return saved ? JSON.parse(saved) : WEEKDAY_SCHEDULE;
+    if (!user) return WEEKDAY_SCHEDULE;
+    return UserService.getUserData(user.id, 'tasks', WEEKDAY_SCHEDULE);
   });
+  
   const [showAddForm, setShowAddForm] = useState(false);
   const [newTask, setNewTask] = useState({ 
     time: "", 
@@ -75,9 +82,10 @@ function App() {
     category: "Personal", 
     icon: "Clock" 
   });
+  
   const [weeklyTasks, setWeeklyTasks] = useState(() => {
-    const saved = localStorage.getItem('todo_weekly_tasks');
-    return saved ? JSON.parse(saved) : SKILL_PLAN;
+    if (!user) return SKILL_PLAN;
+    return UserService.getUserData(user.id, 'weekly_tasks', SKILL_PLAN);
   });
   const [showAddWeekly, setShowAddWeekly] = useState(false);
   const [newWeeklyItem, setNewWeeklyItem] = useState({
@@ -139,12 +147,25 @@ function App() {
   };
 
   useEffect(() => {
-    localStorage.setItem('todo_tasks', JSON.stringify(tasks));
-  }, [tasks]);
+    if (user) {
+      UserService.setUserData(user.id, 'tasks', tasks);
+    }
+  }, [tasks, user]);
 
   useEffect(() => {
-    localStorage.setItem('todo_weekly_tasks', JSON.stringify(weeklyTasks));
-  }, [weeklyTasks]);
+    if (user) {
+      UserService.setUserData(user.id, 'weekly_tasks', weeklyTasks);
+    }
+  }, [weeklyTasks, user]);
+
+  useEffect(() => {
+    if (user) {
+      UserService.setUserData(user.id, 'completed_tasks', {
+        date: new Date().toDateString(),
+        tasks: completedTasks
+      });
+    }
+  }, [completedTasks, user]);
 
   // Notification Permission
   useEffect(() => {
@@ -300,6 +321,10 @@ function App() {
     return <IconComponent size={20} />;
   };
 
+  if (!user) {
+    return <Auth />;
+  }
+
   return (
     <div className="app">
       {/* Sidebar */}
@@ -335,6 +360,21 @@ function App() {
               {renderIcon(todaySkill.icon)}
               <strong>{todaySkill.topic}</strong>
             </div>
+          </div>
+          
+          <div className="user-profile">
+            <div className="user-info">
+              <div className="user-avatar">
+                {user.name ? user.name.charAt(0).toUpperCase() : 'U'}
+              </div>
+              <div className="user-details">
+                <span className="user-name">{user.name || 'User'}</span>
+                <span className="user-email">{user.email}</span>
+              </div>
+            </div>
+            <button className="logout-btn" onClick={() => { playClick(); logout(); }} title="Logout">
+              <User size={18} />
+            </button>
           </div>
         </div>
       </aside>
@@ -623,6 +663,17 @@ function App() {
             <span>{item.id.split(' ')[0]}</span>
           </button>
         ))}
+        <button 
+          className="mobile-nav-item"
+          onClick={() => {
+            playClick();
+            logout();
+          }}
+          style={{ color: '#ef4444' }}
+        >
+          <User size={22} />
+          <span>Logout</span>
+        </button>
       </nav>
 
       {activeToast && (
