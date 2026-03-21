@@ -1,0 +1,19 @@
+{
+  "name": "GrowthPath Tasks",
+  "short_name": "GrowthPath",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "description": "Your ultimate goal tracking and productivity application.",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml"
+    }
+  ],
+  "permissions": [
+    "notifications"
+  ]
+}

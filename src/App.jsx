@@ -177,6 +177,20 @@ function App() {
     }
   }, []);
 
+  // Send tasks to Service Worker for background scheduling
+  useEffect(() => {
+    if (user && 'serviceWorker' in navigator) {
+      navigator.serviceWorker.ready.then((registration) => {
+        if (registration.active) {
+          registration.active.postMessage({
+            type: 'SCHEDULE_TASKS',
+            payload: tasks
+          });
+        }
+      });
+    }
+  }, [tasks, user]);
+
   // Scheduler Engine
   useEffect(() => {
     const checkSchedule = () => {
